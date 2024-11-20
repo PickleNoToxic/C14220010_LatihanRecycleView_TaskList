@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">LatihanRecycleView_TaskList</string>
+
+    <string-array name="namaTask">
+        <item>Mengerjakan Tugas Matematika</item>
+        <item>Membaca Bab 3 Buku Sejarah</item>
+        <item>Latihan Soal Pemrograman</item>
+        <item>Menyiapkan Presentasi</item>
+        <item>Bersih-bersih Kamar</item>
+    </string-array>
+
+    <string-array name="tanggalTask">
+        <item>2024-11-21</item>
+        <item>2024-11-22</item>
+        <item>2024-11-23</item>
+        <item>2024-11-24</item>
+        <item>2024-11-25</item>
+    </string-array>
+
+    <string-array name="deskripsiTask">
+        <item>Selesaikan latihan soal bab 5 mengenai aljabar.</item>
+        <item>Baca dan buat rangkuman Bab 3 dari buku sejarah Indonesia.</item>
+        <item>Lakukan 10 soal pemrograman dari buku latihan.</item>
+        <item>Siapkan slide presentasi untuk mata kuliah komunikasi.</item>
+        <item>Rapikan kamar dan susun barang-barang di lemari.</item>
+    </string-array>
+
+    <string-array name="statusTask">
+        <item>Not Yet Started</item>
+        <item>On-Going</item>
+        <item>Finished</item>
+        <item>Not Yet Started</item>
+        <item>Not Yet Started</item>
+    </string-array>
+</resources>
