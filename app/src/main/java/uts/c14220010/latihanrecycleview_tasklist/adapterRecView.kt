@@ -17,6 +17,8 @@ class adapterRecView(private val listTask: ArrayList<task>) : RecyclerView.Adapt
         fun editData(position: Int)
 
         fun changeStatus(position: Int)
+
+        fun saveTask(position: Int)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -32,6 +34,7 @@ class adapterRecView(private val listTask: ArrayList<task>) : RecyclerView.Adapt
         var _btnHapus = itemView.findViewById<Button>(R.id.btnHapus)
         var _btnEdit = itemView.findViewById<Button>(R.id.btnEdit)
         var _btnChangeStatus = itemView.findViewById<Button>(R.id.btnChangeStatus)
+        var _btnSaveTask = itemView.findViewById<Button>(R.id.btnSaveTask)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -62,6 +65,10 @@ class adapterRecView(private val listTask: ArrayList<task>) : RecyclerView.Adapt
             onItemClickCallback.editData(position)
         }
 
+        holder._btnSaveTask.setOnClickListener {
+            onItemClickCallback.saveTask(position)
+        }
+
         if(task.status != "Not Yet Started"){
             holder._btnEdit.visibility = View.INVISIBLE
         } else {
@@ -78,6 +85,10 @@ class adapterRecView(private val listTask: ArrayList<task>) : RecyclerView.Adapt
             holder._btnChangeStatus.visibility = View.INVISIBLE
         } else {
             holder._btnChangeStatus.visibility = View.VISIBLE
+        }
+
+        if(task.isSaved){
+            holder._btnSaveTask.text = "Unsave"
         }
     }
 }

@@ -7,13 +7,15 @@ data class task(
     var nama : String?,
     var tanggal : String?,
     var deskripsi : String?,
-    var status : String?
+    var status : String?,
+    var isSaved : Boolean = false
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readString(),
+        parcel.readBoolean()
     ) {
     }
 
@@ -26,6 +28,7 @@ data class task(
         parcel.writeString(tanggal)
         parcel.writeString(deskripsi)
         parcel.writeString(status)
+        parcel.writeBoolean(isSaved)
     }
 
     companion object CREATOR : Parcelable.Creator<task> {

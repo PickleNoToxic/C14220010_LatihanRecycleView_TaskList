@@ -56,19 +56,33 @@ class AddTaskActivity : AppCompatActivity() {
             val tanggal = _etTanggalTask.text.toString()
             val deskripsi = _etDeskripsiTask.text.toString()
 
+            val isSavedTask = intent.getBooleanExtra("isSavedTask", false)
+
             if (nama.isNotEmpty() && tanggal.isNotEmpty() && deskripsi.isNotEmpty()) {
                 // Kirim data kembali ke MainActivity
                 if (isEditMode) {
-                    MainActivity.dataTask[taskPosition].nama = nama
-                    MainActivity.dataTask[taskPosition].tanggal = tanggal
-                    MainActivity.dataTask[taskPosition].deskripsi = deskripsi
+                    if (isSavedTask) {
+                        val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("isSavedTask", true)
+                        intent.putExtra("taskPosition", taskPosition)
+                        intent.putExtra("taskName", nama)
+                        intent.putExtra("taskDate", tanggal)
+                        intent.putExtra("taskDescription", deskripsi)
+                        startActivity(intent)
+                    } else {
+                        MainActivity.dataTask[taskPosition].nama = nama
+                        MainActivity.dataTask[taskPosition].tanggal = tanggal
+                        MainActivity.dataTask[taskPosition].deskripsi = deskripsi
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    }
                 } else {
                     var task = task(nama, tanggal, deskripsi, "Not Yet Started")
                     MainActivity.dataTask.add(task)
-                }
 
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
